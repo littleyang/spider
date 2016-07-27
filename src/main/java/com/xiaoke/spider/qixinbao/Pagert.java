@@ -30,13 +30,25 @@ public class Pagert implements PageProcessor{
 	@Override
 	public void process(Page page) {
 		// TODO Auto-generated method stub
-		 List<String> mainStaffs = page.getHtml().xpath("//*[@id=\"info\"]/div/div[3]/div[2]/ul/li").all();
-	       for(int i=0;i<mainStaffs.size();i++){
-	    	   Document doc = Jsoup.parseBodyFragment(page.getHtml().xpath("//*[@id=\"info\"]/div/div[3]/div[2]/ul/li").all().get(i));
-	           Element body = doc.body();  
-	           System.out.println("==== " + doc.select("span").first().text());
-	           System.out.println("==== " + doc.select("span").last().text());
-	       }
+		System.out.println("==========================主要人员=======================");
+		List<String> mainStaffs = page.getHtml().xpath("//*[@id=\"info\"]/div/div[3]/div[2]/ul/li").all();
+		for(int i=0;i<mainStaffs.size();i++){
+	    	 Document doc = Jsoup.parseBodyFragment(mainStaffs.get(i));
+	         Element body = doc.body();  
+	         System.out.println(doc.select("span").first().text() + " : " + doc.select("span").last().text());
+	    }
+	       
+	    // 股东信息
+	    //System.out.println(page.getHtml().xpath("//*[@id=\"info\"]/div/div[2]/div[2]/table/tbody/tr").all());
+		System.out.println("==========================股东信息=======================");	
+	    List<String> sharers = page.getHtml().xpath("//*[@id=\"info\"]/div/div[2]/div[2]/table/tbody/tr").all();
+	    	
+	    for(int i=0;i<sharers.size();i++){
+	    	Document doc = Jsoup.parseBodyFragment("<table>" + sharers.get(i) + "</table>");
+	    	//System.out.println("==== " + "<table>" + sharers.get(i) + "</table>");
+	        System.out.println(doc.getElementsByTag("td").first().text() + " : " + doc.select("span").last().text());
+	    }
+	       
 	       
 	}
 

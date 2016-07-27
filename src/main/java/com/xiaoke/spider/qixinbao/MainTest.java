@@ -23,7 +23,9 @@ public class MainTest {
         
         HttpClientDownloaderPool httpClientDownloaderPool = new HttpClientDownloaderPool(sites);
 
-        Spider.create(new Pagert(httpClientDownloaderPool)).addUrl("http://www.qixin.com/company/534472fd-7d53-4958-8132-d6a6242423d8#/info").thread(5).run();
+        //Spider.create(new Pagert(httpClientDownloaderPool)).addUrl("http://www.qixin.com/company/534472fd-7d53-4958-8132-d6a6242423d8#/info").thread(5).run();
+        
+        Spider.create(new Pagert(httpClientDownloaderPool)).addUrl("http://www.qixin.com/company/5dec59e3-2021-4bfb-892f-3f0ed41f59d5#/info").thread(5).run();
         
 	}
 	
