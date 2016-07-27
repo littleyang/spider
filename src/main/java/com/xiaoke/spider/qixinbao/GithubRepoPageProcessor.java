@@ -20,7 +20,6 @@ public class GithubRepoPageProcessor implements PageProcessor {
         page.putField("readme", page.getHtml().xpath("//div[@id='readme']/tidyText()"));
     }
 
-    
     public Site getSite() {
         return site;
     }
